@@ -76,10 +76,3 @@ class JOSS_Historical:
                 bar.next()
 
         return DataFrame(data=data)
-
-
-j = JOSS()
-print(j.get())
-
-jh = JOSS_Historical()
-print(jh.get())
