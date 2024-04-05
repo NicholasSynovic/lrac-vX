@@ -1,6 +1,4 @@
 import re
-import warnings
-from pprint import pprint as print
 from string import Template
 from typing import List
 
@@ -12,10 +10,10 @@ from pandas import DataFrame
 from progress.bar import Bar
 from requests import Response
 
-warnings.filterwarnings(action="ignore")
+from lrac.collectors._classes.venue import Venue_ABC, Venue_Historical_ABC
 
 
-class JOSS:
+class JOSS(Venue_ABC):
     def __init__(self) -> None:
         self.feedURL: str = "https://joss.theoj.org/papers/published.atom"
 
@@ -32,7 +30,7 @@ class JOSS:
         return DataFrame(data=data)
 
 
-class JOSS_Historical:
+class JOSS_Historical(Venue_Historical_ABC):
     def __init__(self) -> None:
         self.feedURL: Template = Template(
             template="https://joss.theoj.org/papers/published?page=${page}"
